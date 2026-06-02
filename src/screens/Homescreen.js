@@ -53,7 +53,8 @@ export default function Home({ navigation }) {
         <Pressable
           key={filme.id}
           style={styles.card}
-          onPress={() => navigation.navigate("Detalhes")}
+          onPress={() => navigation.navigate("Detalhes", {screen: "Descricao", params: { filme } })
+}
         >
           <Image source={{ uri: filme.imagem }} style={styles.poster} />
           <View style={styles.info}>
