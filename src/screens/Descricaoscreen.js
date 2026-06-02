@@ -9,8 +9,22 @@ import {
 } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 
+import { useFavorites } from "./FavoritesContext";
+
 const Descricao = ({ route, navigation }) => {
   const { filme } = route.params;
+  const { adicionarFavorito, isFavorito } = useFavorites();
+
+  const jaEhFavorito = isFavorito(filme.id);
+
+  const handleFavoritar = () => {
+    if (jaEhFavorito) {
+      alert("Este filme já está nos favoritos!");
+    } else {
+      adicionarFavorito(filme);
+      alert("✅ Filme adicionado aos favoritos!");
+    }
+  };
 
   const sinopses = {
     1: "Em um futuro onde a Terra está se tornando inabitável, um ex-piloto da NASA lidera uma missão através de um buraco de minhoca no espaço para encontrar um novo lar para a humanidade. Enquanto explora planetas distantes, ele enfrenta desafios científicos e emocionais ligados ao tempo e à sua família.",
@@ -23,14 +37,12 @@ const Descricao = ({ route, navigation }) => {
 
   return (
     <View style={styles.container}>
-
       <Pressable style={styles.closeButton} onPress={() => navigation.goBack()}>
         <Ionicons name="arrow-back" size={28} color="#000" />
       </Pressable>
 
       <ScrollView style={styles.scroll}>
         <View style={styles.content}>
-
           <Image source={{ uri: filme.imagem }} style={styles.poster} />
 
           <Text style={styles.title}>{filme.titulo}</Text>
@@ -43,12 +55,23 @@ const Descricao = ({ route, navigation }) => {
           <Text style={styles.sectionTitle}>Sinopse</Text>
           <Text style={styles.sinopse}>{sinopse}</Text>
 
-          <Pressable style={styles.button} onPress={() => navigation.navigate("Trailer", { filme })}>
+          <Pressable
+            style={styles.button}
+            onPress={() => navigation.navigate("Trailer", { filme })}
+          >
             <Text style={styles.buttonText}>Ver Trailer</Text>
           </Pressable>
 
-          <Pressable style={styles.favoriteButton} onPress={() => alert("filme favoritado")}>
-            <Text style={styles.favoriteText}>Favoritar</Text>
+          <Pressable style={styles.favoriteButton} onPress={handleFavoritar}>
+            <Ionicons
+              name={jaEhFavorito ? "heart" : "heart-outline"}
+              size={22}
+              color="#fff"
+              style={{ marginRight: 8 }}
+            />
+            <Text style={styles.favoriteText}>
+              {jaEhFavorito ? "Já é Favorito" : "Favoritar"}
+            </Text>
           </Pressable>
         </View>
       </ScrollView>
