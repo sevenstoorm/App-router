@@ -47,7 +47,7 @@ const Descricao = ({ route, navigation }) => {
     1: "Em GTA VI, os jogadores mergulham em um mundo aberto vibrante e dinâmico, explorando uma cidade fictícia inspirada em Miami. Com uma narrativa envolvente, personagens complexos e uma variedade de missões, o jogo oferece uma experiência imersiva de ação e aventura, onde os jogadores podem se envolver em atividades criminosas, personalizar seus personagens e explorar um ambiente repleto de detalhes e interações.",
     2: "CyberPunk 2077 é um RPG de ação ambientado em um futuro distópico na cidade de Night City. Os jogadores assumem o papel de V, um mercenário personalizável, e embarcam em uma jornada para se tornar uma lenda urbana. Com uma narrativa ramificada, escolhas significativas e um mundo aberto vibrante, o jogo oferece uma experiência imersiva repleta de tecnologia avançada, gangues perigosas e conspirações corporativas.",
     3: "Fallout New Vegas é um RPG de ação ambientado em um cenário pós-apocalíptico no deserto de Mojave. Os jogadores assumem o papel de um mensageiro que é deixado para morrer, mas sobrevive e embarca em uma jornada para encontrar o responsável por sua situação. Com uma narrativa ramificada, escolhas morais significativas e um mundo aberto repleto de facções, o jogo oferece uma experiência imersiva onde os jogadores podem explorar ruínas, interagir com personagens únicos e moldar o destino do Mojave.",
-    4: "DMC 3 é um jogo de ação e hack and slash que segue a história de Dante, um caçador de demônios, enquanto ele enfrenta seu irmão gêmeo Vergil e uma série de inimigos demoníacos. Com combates rápidos e fluidos, o jogo oferece uma experiência intensa e estilizada, onde os jogadores podem usar uma variedade de armas e habilidades para derrotar hordas de inimigos e chefes desafiadores em um cenário gótico e sombrio.",
+    4: "DMC 3 é um jogo de ação e hack and slash que segue as aventuras de Dante, um caçador de demônios. O jogo apresenta uma narrativa envolvente, onde Dante enfrenta uma série de desafios e inimigos demoníacos para salvar o mundo. Com um sistema de combate fluido e estiloso, os jogadores podem executar combos impressionantes, desbloquear habilidades e enfrentar chefes desafiadores em uma experiência repleta de ação intensa e visuais impressionantes.",
   };
 
   const sinopse = sinopses[jogo.id];
@@ -72,24 +72,27 @@ const Descricao = ({ route, navigation }) => {
           <Text style={styles.sectionTitle}>Sinopse</Text>
           <Text style={styles.sinopse}>{sinopse}</Text>
 
-          <Pressable
-            style={styles.button}
-            onPress={() => navigation.navigate("Trailer", { jogo })}
-          >
-            <Text style={styles.buttonText}>Ver Trailer</Text>
-          </Pressable>
+          {/* Botão */}
+          <View style={styles.buttonsContainer}>
+            <Pressable
+              style={styles.button}
+              onPress={() => navigation.navigate("Trailer", { jogo })}
+            >
+              <Text style={styles.buttonText}>Ver Trailer</Text>
+            </Pressable>
 
-          <Pressable style={styles.favoriteButton} onPress={handleFavoritar}>
-            <Ionicons
-              name={jaEhFavorito ? "heart" : "heart-outline"}
-              size={22}
-              color="#fff"
-              style={{ marginRight: 8 }}
-            />
-            <Text style={styles.favoriteText}>
-              {jaEhFavorito ? "Já é Favorito" : "Favoritar"}
-            </Text>
-          </Pressable>
+            <Pressable style={styles.favoriteButton} onPress={handleFavoritar}>
+              <Ionicons
+                name={jaEhFavorito ? "heart" : "heart-outline"}
+                size={22}
+                color="#fff"
+                style={{ marginRight: 8 }}
+              />
+              <Text style={styles.favoriteText}>
+                {jaEhFavorito ? "Já é Favorito" : "Favoritar"}
+              </Text>
+            </Pressable>
+          </View>
         </View>
       </ScrollView>
     </View>
@@ -160,34 +163,47 @@ const styles = StyleSheet.create({
     maxWidth: 600,
     textAlign: "center",
   },
+
+  buttonsContainer: {
+    marginTop: 20,
+    flexDirection: "row",        // ← aqui você controla a direção
+    justifyContent: "center",    // centraliza os botões
+    gap: 15,                     // espaço entre os botões (React Native 0.71+)
+    flexWrap: "wrap",            // quebra linha se necessário
+  },
+
   button: {
     backgroundColor: "#139fe4",
-    padding: 16,
+    paddingVertical: 16,
+    paddingHorizontal: 32,
     borderRadius: 10,
-    flexDirection: "row",
-    justifyContent: "center",
+    flex: 1,                     // faz os botões crescerem igualmente
+    minWidth: 160,
     alignItems: "center",
-    marginBottom: 12,
-    maxWidth: 200,
-    marginLeft: 630,
   },
+
+  favoriteButton: {
+    backgroundColor: "#000000",
+    paddingVertical: 16,
+    paddingHorizontal: 32,
+    borderRadius: 10,
+    flex: 1,
+    minWidth: 160,
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "center",
+  },
+
   buttonText: {
     color: "#FFF",
     fontSize: 16,
+    fontWeight: "600",
   },
-  favoriteButton: {
-    borderColor: "#000000",
-    backgroundColor: "#000000",
-    padding: 16,
-    borderRadius: 10,
-    justifyContent: "center",
-    alignItems: "center",
-    maxWidth: 200,
-    marginLeft: 630,
-  },
+
   favoriteText: {
     color: "#ffffff",
     fontSize: 16,
+    fontWeight: "600",
   },
 });
 

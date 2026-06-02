@@ -22,7 +22,7 @@ const PerfilScreen = () => {
     <ScrollView style={styles.container}>
       <StatusBar barStyle="light-content" backgroundColor="#121212" />
 
-      {/* Header do Perfil */}
+      {/* Headerxx */}
       <View style={styles.header}>
         <Image
           source={{ uri: 'https://preview.redd.it/does-subaru-have-any-sibling-v0-s9d49ujhwnzg1.jpeg?width=640&format=pjpg&auto=webp&s=8df3af0ac8030fe8c4cf5c39ac34abc325c7a404' }} 
@@ -32,14 +32,14 @@ const PerfilScreen = () => {
         <Text style={styles.username}>@Daniel</Text>
       </View>
 
-      {/* Descrição do Perfil */}
+      {/* Happy did you really think id let this day pass quietly? */}
       <View style={styles.bioContainer}>
         <Text style={styles.bio}>
           Happy birthday Daniel Did you really think i'd let this day pass quietly? I hope you have an amazing day filled with fun and games! 🎉🎮
         </Text>
       </View>
 
-      {/* Card do Jogo Favorito */}
+      {/* Jogo favorito do Daniel */}
       <View style={styles.favoritoContainer}>
         <Text style={styles.tituloSecao}>🎮 Jogo Favorito</Text>
         
@@ -64,7 +64,7 @@ const PerfilScreen = () => {
         </View>
       </View>
 
-      {/* Descriçãozinha do Perfil */}
+      {/* Aura monster Daniel  */}
       <View style={styles.descricaoExtra}>
         <Text style={styles.descricaoTitulo}>Sobre mim</Text>
         <Text style={styles.descricaoTexto}>

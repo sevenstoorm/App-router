@@ -24,7 +24,7 @@ const planos = [
     id: 3,
     nome: "Premium",
     preco: "R$ 59,90",
-    descricao: "Tenha acesso ao nosso catálogo completo de jogos",
+    descricao: "Tenha acesso ao nosso catálogo completo",
   },
 ];
 
@@ -36,7 +36,6 @@ export default function Assinatura({ navigation }) {
       showsVerticalScrollIndicator={false}
     >
       <Text style={styles.title}>Escolha seu Plano</Text>
-
       <Text style={styles.subtitle}>
         Aproveite conteúdos exclusivos sem limites
       </Text>
@@ -53,10 +52,7 @@ export default function Assinatura({ navigation }) {
             </View>
 
             <Text style={styles.price}>{plano.preco}</Text>
-
-            <Text style={styles.description}>
-              {plano.descricao}
-            </Text>
+            <Text style={styles.description}>{plano.descricao}</Text>
 
             <Text style={styles.info}>
               Aproveite conteúdos exclusivos e jogue onde quiser.
@@ -75,96 +71,78 @@ export default function Assinatura({ navigation }) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#F3F4F6",
+    backgroundColor: "#0A0A0A",
   },
-
   content: {
     padding: 20,
+    paddingBottom: 40,
   },
-
   title: {
-    fontSize: 30,
+    color: "#4400ff",
+    fontSize: 32,
     fontWeight: "bold",
-    color: "#111827",
-    marginBottom: 5,
+    textAlign: "center",
+    marginBottom: 8,
   },
-
   subtitle: {
-    fontSize: 15,
-    color: "#6B7280",
-    marginBottom: 25,
+    color: "#A1A1AA",
+    fontSize: 16,
+    textAlign: "center",
+    marginBottom: 30,
   },
-
   cardsContainer: {
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "flex-start",
+    gap: 18,
   },
-
   card: {
-    width: "31%",
-    backgroundColor: "#FFFFFF",
-    borderRadius: 8,
-    borderWidth: 1,
-    borderColor: "#E5E7EB",
-    minHeight: 320,
-    padding: 15,
-
-    elevation: 3,
-    shadowColor: "#000",
-    shadowOffset: {
-      width: 0,
-      height: 2,
-    },
-    shadowOpacity: 0.1,
-    shadowRadius: 4,
+    backgroundColor: "#151515",
+    borderWidth: 1.5,
+    borderColor: "#4400ff",
+    borderRadius: 16,
+    padding: 22,
+    alignItems: "center",
   },
-
   cardHeader: {
-    paddingVertical: 10,
-    borderRadius: 6,
-    marginBottom: 20,
+    backgroundColor: "#4400ff",
+    paddingVertical: 6,
+    paddingHorizontal: 20,
+    borderRadius: 20,
+    marginBottom: 16,
   },
-
   headerText: {
-    color: "#000000",
-    textAlign: "center",
+    color: "#FFF",
+    fontSize: 20,
     fontWeight: "bold",
-    fontSize: 25,
   },
-
   price: {
-    fontSize: 24,
+    color: "#FFF",
+    fontSize: 34,
     fontWeight: "bold",
-    color: "#111827",
-    marginBottom: 15,
+    marginBottom: 8,
   },
-
   description: {
-    fontSize: 14,
-    color: "#374151",
-    lineHeight: 20,
-    marginBottom: 12,
-  },
-
-  info: {
-    fontSize: 13,
-    color: "#6B7280",
-    lineHeight: 18,
-    flex: 1,
-  },
-
-  button: {
-    backgroundColor: "#7E22CE",
-    paddingVertical: 10,
-    borderRadius: 6,
-    marginTop: 20,
-  },
-
-  buttonText: {
-    color: "#FFFFFF",
+    color: "#A1A1AA",
+    fontSize: 16,
     textAlign: "center",
-    fontWeight: "bold",
+    marginBottom: 16,
+  },
+  info: {
+    color: "#777",
     fontSize: 14,
+    textAlign: "center",
+    marginBottom: 24,
+    lineHeight: 20,
+  },
+  button: {
+    backgroundColor: "#4400ff",
+    paddingVertical: 14,
+    paddingHorizontal: 40,
+    borderRadius: 10,
+    width: "100%",
+    alignItems: "center",
+  },
+  buttonText: {
+    color: "#FFF",        
+    fontSize: 17,
+    fontWeight: "bold",
   },
 });
