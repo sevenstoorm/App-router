@@ -12,14 +12,14 @@ import { Ionicons } from "@expo/vector-icons";
 import { useFavorites } from "./FavoritesContext";
 
 const Descricao = ({ route, navigation }) => {
-  const filme = route?.params?.filme;
+  const jogo = route?.params?.jogo;
   const { adicionarFavorito, isFavorito } = useFavorites();
 
-  if (!filme) {
+  if (!jogo) {
     return (
       <View style={styles.container}>
         <Text style={styles.errorText}>
-          Nenhum filme foi selecionado. Volte para a tela anterior e tente
+          Nenhum jogo foi selecionado. Volte para a tela anterior e tente
           novamente.
         </Text>
         <Pressable
@@ -32,25 +32,25 @@ const Descricao = ({ route, navigation }) => {
     );
   }
 
-  const jaEhFavorito = isFavorito(filme.id);
+  const jaEhFavorito = isFavorito(jogo.id);
 
   const handleFavoritar = () => {
     if (jaEhFavorito) {
-      alert("Este filme já está nos favoritos!");
+      alert("Este jogo já está nos favoritos!");
     } else {
-      adicionarFavorito(filme);
-      alert("✅ Filme adicionado aos favoritos!");
+      adicionarFavorito(jogo);
+      alert("✅ Jogo adicionado aos favoritos!");
     }
   };
 
   const sinopses = {
-    1: "Em um futuro onde a Terra está se tornando inabitável, um ex-piloto da NASA lidera uma missão através de um buraco de minhoca no espaço para encontrar um novo lar para a humanidade. Enquanto explora planetas distantes, ele enfrenta desafios científicos e emocionais ligados ao tempo e à sua família.",
-    2: "Dom Cobb é um especialista em invadir sonhos para roubar informações. Recebendo uma última missão, ele precisa realizar o impossível: implantar uma ideia na mente de alguém sem que a pessoa perceba. Para isso, sua equipe mergulha em camadas cada vez mais profundas de sonhos.",
-    3: "Miles Morales ganha poderes semelhantes aos do Homem-Aranha e descobre a existência de múltiplos universos. Quando uma ameaça coloca todas as dimensões em risco, ele se une a diferentes versões do Homem-Aranha para salvar o multiverso e encontrar seu próprio caminho como herói.",
-    4: "Paul Atreides, herdeiro de uma poderosa família nobre, viaja para o planeta desértico Arrakis, a única fonte da substância mais valiosa do universo. Em meio a conspirações políticas, guerras e profecias, ele precisa decidir seu destino e o futuro de seu povo.",
+    1: "Em GTA VI, os jogadores mergulham em um mundo aberto vibrante e dinâmico, explorando uma cidade fictícia inspirada em Miami. Com uma narrativa envolvente, personagens complexos e uma variedade de missões, o jogo oferece uma experiência imersiva de ação e aventura, onde os jogadores podem se envolver em atividades criminosas, personalizar seus personagens e explorar um ambiente repleto de detalhes e interações.",
+    2: "CyberPunk 2077 é um RPG de ação ambientado em um futuro distópico na cidade de Night City. Os jogadores assumem o papel de V, um mercenário personalizável, e embarcam em uma jornada para se tornar uma lenda urbana. Com uma narrativa ramificada, escolhas significativas e um mundo aberto vibrante, o jogo oferece uma experiência imersiva repleta de tecnologia avançada, gangues perigosas e conspirações corporativas.",
+    3: "Fallout New Vegas é um RPG de ação ambientado em um cenário pós-apocalíptico no deserto de Mojave. Os jogadores assumem o papel de um mensageiro que é deixado para morrer, mas sobrevive e embarca em uma jornada para encontrar o responsável por sua situação. Com uma narrativa ramificada, escolhas morais significativas e um mundo aberto repleto de facções, o jogo oferece uma experiência imersiva onde os jogadores podem explorar ruínas, interagir com personagens únicos e moldar o destino do Mojave.",
+    4: "DMC 3 é um jogo de ação e hack and slash que segue a história de Dante, um caçador de demônios, enquanto ele enfrenta seu irmão gêmeo Vergil e uma série de inimigos demoníacos. Com combates rápidos e fluidos, o jogo oferece uma experiência intensa e estilizada, onde os jogadores podem usar uma variedade de armas e habilidades para derrotar hordas de inimigos e chefes desafiadores em um cenário gótico e sombrio.",
   };
 
-  const sinopse = sinopses[filme.id];
+  const sinopse = sinopses[jogo.id];
 
   return (
     <View style={styles.container}>
@@ -60,21 +60,21 @@ const Descricao = ({ route, navigation }) => {
 
       <ScrollView style={styles.scroll}>
         <View style={styles.content}>
-          <Image source={{ uri: filme.imagem }} style={styles.poster} />
+          <Image source={{ uri: jogo.imagem }} style={styles.poster} />
 
-          <Text style={styles.title}>{filme.titulo}</Text>
+          <Text style={styles.title}>{jogo.nome}</Text>
 
           <Text style={styles.info}>
-            {filme.genero} {filme.duracao}
+            {jogo.genero} {jogo.duracao}
           </Text>
-          <Text style={styles.nota}>Nota: {filme.nota}</Text>
+          <Text style={styles.nota}>Nota: {jogo.nota}</Text>
 
           <Text style={styles.sectionTitle}>Sinopse</Text>
           <Text style={styles.sinopse}>{sinopse}</Text>
 
           <Pressable
             style={styles.button}
-            onPress={() => navigation.navigate("Trailer", { filme })}
+            onPress={() => navigation.navigate("Trailer", { jogo })}
           >
             <Text style={styles.buttonText}>Ver Trailer</Text>
           </Pressable>

@@ -10,16 +10,16 @@ import {
 import { Ionicons } from "@expo/vector-icons";
 
 const Trailerscreen = ({ route, navigation }) => {
-  const { filme } = route.params;
+  const { jogo } = route.params;
 
   const trailers = {
-    1: "https://www.youtube.com/watch?v=zSWdZVtXT7E",
-    2: "https://www.youtube.com/watch?v=YoHD9XEInc0", 
-    3: "https://www.youtube.com/watch?v=g4Hbz2jLxvQ",
-    4: "https://www.youtube.com/watch?v=n9xhJrPXOp4",
+    1: "https://www.youtube.com/watch?v=QkkoHAzjnUs",
+    2: "https://www.youtube.com/watch?v=8X2kIfS6fb8", 
+    3: "https://www.youtube.com/watch?v=8X2kIfS6fb8",
+    4: "https://www.youtube.com/watch?v=5C8uVhQ6nqg",
   };
 
-  const trailerUrl = trailers[filme.id];
+  const trailerUrl = trailers[jogo.id];
 
   return (
     <View style={styles.container}>
@@ -28,14 +28,14 @@ const Trailerscreen = ({ route, navigation }) => {
         <Pressable style={styles.backButton} onPress={() => navigation.goBack()}>
           <Ionicons name="arrow-back" size={28} color="#000000" />
         </Pressable>
-        <Text style={styles.title}>Trailer {filme.titulo}</Text>
+        <Text style={styles.title}>Trailer {jogo.nome}</Text>
       </View>
 
       <View style={styles.content}>
 
-        <Text style={styles.movieTitle}>{filme.titulo}</Text>
+        <Text style={styles.movieTitle}>{jogo.nome}</Text>
         <Text style={styles.genero}>
-          {filme.genero} {filme.duracao}
+          {jogo.genero} {jogo.duracao}
         </Text>
 
         <Text style={styles.descricao}>

@@ -7,38 +7,38 @@ import {
   View,
 } from "react-native";
 
-const filmes = [
+const jogos = [
   {
     id: 1,
-    titulo: "Interestelar",
-    genero: "Ficcao cientifica",
+    nome: "GTA VI",
+    genero: "Ação / Aventura",
     nota: "9.1",
-    duracao: "2h 49min",
-    imagem: "https://image.tmdb.org/t/p/w500/gEU2QniE6E77NI6lCU6MxlNBvIx.jpg",
+    duracao: "49h 30min",
+    imagem: "https://www.adrenaline.com.br/wp-content/uploads/2024/08/GTA-6-ja-tem-janela-de-lancamento-definida-afirma-Take-Two-01-912x569.jpg",
   },
   {
     id: 2,
-    titulo: "A Origem",
-    genero: "Acao / suspense",
+    nome: "CyberPunk 2077",
+    genero: "RPG / Ação",
     nota: "8.8",
-    duracao: "2h 28min",
-    imagem: "https://image.tmdb.org/t/p/w500/9gk7adHYeDvHkCSEqAvQNLV5Uge.jpg",
+    duracao: "70h 15min",
+    imagem: "https://upload.wikimedia.org/wikipedia/pt/f/f7/Cyberpunk_2077_capa.png",
   },
   {
     id: 3,
-    titulo: "Homem-Aranha no Aranhaverso",
-    genero: "Animacao",
-    nota: "8.7",
-    duracao: "1h 57min",
-    imagem: "https://image.tmdb.org/t/p/w500/iiZZdoQBEYBv6id8su7ImL0oCbD.jpg",
+    nome: "Fallout New Vegas",
+    genero: "RPG",
+    nota: "9.8",
+    duracao: "60h 45min",
+    imagem: "https://static.wikia.nocookie.net/fallout/images/f/ff/FNV_box_art_%28US%29.jpg/revision/latest?cb=20230813031307",
   },
   {
     id: 4,
-    titulo: "Duna",
-    genero: "Aventura / fantasia",
-    nota: "8.0",
-    duracao: "2h 35min",
-    imagem: "https://image.tmdb.org/t/p/w500/d5NXSklXo0qyIYkgV94XAgMIckC.jpg",
+    nome: "DMC 3",
+    genero: "H&S",
+    nota: "9.3",
+    duracao: "32h 10min",
+    imagem: "https://static.wikia.nocookie.net/devilmaycry/images/8/8a/Img_dmc3_dante_awakening_special_edition_capa.jpg/revision/latest/scale-to-width-down/985?cb=20210413004944&path-prefix=pt-br",
   },
 ];
 
@@ -49,20 +49,20 @@ export default function Home({ navigation }) {
         <Text style={styles.title}>Home</Text>
       </View>
 
-      {filmes.map((filme) => (
+      {jogos.map((jogo) => (
         <Pressable
-          key={filme.id}
+          key={jogo.id}
           style={styles.card}
-          onPress={() => navigation.navigate("Detalhes", {screen: "Descricao", params: { filme } })
+          onPress={() => navigation.navigate("Detalhes", {screen: "Descricao", params: { jogo } })
 }
         >
-          <Image source={{ uri: filme.imagem }} style={styles.poster} />
+          <Image source={{ uri: jogo.imagem }} style={styles.poster} />
           <View style={styles.info}>
-            <Text style={styles.movieTitle}>{filme.titulo}</Text>
-            <Text style={styles.movieMeta}>{filme.genero}</Text>
+            <Text style={styles.movieTitle}>{jogo.nome}</Text>
+            <Text style={styles.movieMeta}>{jogo.genero}</Text>
             <View style={styles.row}>
-              <Text style={styles.badge}>Nota {filme.nota}</Text>
-              <Text style={styles.duration}>{filme.duracao}</Text>
+              <Text style={styles.badge}>Nota {jogo.nota}</Text>
+              <Text style={styles.duration}>{jogo.duracao}</Text>
             </View>
           </View>
         </Pressable>

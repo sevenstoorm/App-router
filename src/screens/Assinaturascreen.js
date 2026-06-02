@@ -12,19 +12,19 @@ const planos = [
     id: 1,
     nome: "Básico",
     preco: "R$ 19,90",
-    descricao: "Assista em 1 dispositivo simultaneamente.",
+    descricao: "Tenha acesso a 10 jogos por mês",
   },
   {
     id: 2,
     nome: "Padrão",
     preco: "R$ 39,90",
-    descricao: "Assista em até 2 dispositivos simultaneamente.",
+    descricao: "Tenha acesso a 30 jogos por mês",
   },
   {
     id: 3,
     nome: "Premium",
     preco: "R$ 59,90",
-    descricao: "Assista em até 4 dispositivos simultaneamente.",
+    descricao: "Tenha acesso ao nosso catálogo completo de jogos",
   },
 ];
 
@@ -59,7 +59,7 @@ export default function Assinatura({ navigation }) {
             </Text>
 
             <Text style={styles.info}>
-              Aproveite conteúdos exclusivos e assista onde quiser.
+              Aproveite conteúdos exclusivos e jogue onde quiser.
             </Text>
 
             <Pressable style={styles.button}>

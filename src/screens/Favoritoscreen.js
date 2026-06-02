@@ -13,54 +13,41 @@ export default function FavoritosScreen({ navigation }) {
   const { favoritos, removerFavorito } = useFavorites();
 
   return (
-    <ScrollView
-      style={styles.container}
-      contentContainerStyle={styles.content}
-    >
+    <ScrollView style={styles.container} contentContainerStyle={styles.content}>
       <View style={styles.header}>
         <Text style={styles.title}>Favoritos</Text>
       </View>
 
       {favoritos.length > 0 ? (
-        favoritos.map((filme) => (
+        favoritos.map((jogo) => (
           <Pressable
-            key={filme.id}
+            key={jogo.id}
             style={styles.card}
             onPress={() =>
-              navigation.navigate("Descricao", { filme })
+              navigation.navigate("Detalhes", {
+                screen: "Descricao",
+                params: { jogo },
+              })
             }
           >
-            <Image
-              source={{ uri: filme.imagem }}
-              style={styles.poster}
-            />
+            <Image source={{ uri: jogo.imagem }} style={styles.poster} />
 
             <View style={styles.info}>
-              <Text style={styles.movieTitle}>
-                {filme.titulo}
-              </Text>
+              <Text style={styles.movieTitle}>{jogo.nome}</Text>
 
-              <Text style={styles.movieMeta}>
-                {filme.genero}
-              </Text>
+              <Text style={styles.movieMeta}>{jogo.genero}</Text>
 
               <View style={styles.row}>
-                <Text style={styles.badge}>
-                  Nota {filme.nota}
-                </Text>
+                <Text style={styles.badge}>Nota {jogo.nota}</Text>
 
-                <Text style={styles.duration}>
-                  {filme.duracao}
-                </Text>
+                <Text style={styles.duration}>{jogo.duracao}</Text>
               </View>
 
               <Pressable
-                onPress={() => removerFavorito(filme.id)}
+                onPress={() => removerFavorito(jogo.id)}
                 style={styles.removeButton}
               >
-                <Text style={styles.removeText}>
-                  Remover
-                </Text>
+                <Text style={styles.removeText}>Remover</Text>
               </Pressable>
             </View>
           </Pressable>
@@ -68,7 +55,7 @@ export default function FavoritosScreen({ navigation }) {
       ) : (
         <View style={styles.emptyContainer}>
           <Text style={styles.emptyText}>
-            Você ainda não tem filmes favoritos
+            Você ainda não tem jogos favoritos
           </Text>
         </View>
       )}

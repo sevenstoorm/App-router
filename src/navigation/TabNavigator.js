@@ -4,7 +4,7 @@ import { Pressable } from "react-native";
 
 import Assinatura from "../screens/Assinaturascreen";
 import Configuracoes from "../screens/Configuracaoscreen";
-import Conta from "../screens/Contascreen";
+import Conta from "../screens/ContaScreen";
 import Home from "../screens/Homescreen";
 import Favoritos from "../screens/FavoritoScreen";
 import Perfil from "../screens/Perfilscreen";
