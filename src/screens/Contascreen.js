@@ -14,7 +14,7 @@ const ContaScreen = () => {
   const planoAtual = {
     nome: "Premium Gamer",
     preco: "R$ 59,90",
-    descricao: "Acesso completo ao catálogo de jogos",
+    descricao: "Acesso completo ao catalogo de jogos",
     proximaCobranca: "30/06/2026",
     status: "Ativo",
   };
@@ -22,20 +22,20 @@ const ContaScreen = () => {
   const handleAlterarSenha = () => {
     Alert.alert(
       "Alterar Senha",
-      "Aqui você pode alterar sua senha de acesso.",
+      "Aqui voce pode alterar sua senha de acesso.",
     );
   };
 
   const handleExcluirConta = () => {
     Alert.alert(
       "Excluir Conta",
-      "Tem certeza que deseja excluir sua conta? Esta ação não pode ser desfeita.",
+      "Tem certeza que deseja excluir sua conta? Esta acao nao pode ser desfeita.",
       [
         { text: "Cancelar", style: "cancel" },
         {
           text: "Excluir",
           style: "destructive",
-          onPress: () => Alert.alert("Conta Excluída", "Sua conta foi excluída com sucesso."),
+          onPress: () => Alert.alert("Conta Excluida", "Sua conta foi excluida com sucesso."),
         },
       ],
     );
@@ -50,7 +50,7 @@ const ContaScreen = () => {
       </View>
 
       <View style={styles.section}>
-        <Text style={styles.sectionTitle}>Informações da Conta</Text>
+        <Text style={styles.sectionTitle}>Informacoes da Conta</Text>
 
         <View style={styles.infoItem}>
           <Ionicons name="mail-outline" size={24} color="#BB86FC" />
@@ -64,7 +64,7 @@ const ContaScreen = () => {
           <Ionicons name="calendar-outline" size={24} color="#BB86FC" />
           <View style={styles.infoText}>
             <Text style={styles.label}>Membro desde</Text>
-            <Text style={styles.value}>Março de 2025</Text>
+            <Text style={styles.value}>MarÃ§o de 2025</Text>
           </View>
         </View>
       </View>
@@ -81,11 +81,11 @@ const ContaScreen = () => {
           </View>
 
           <Text style={styles.price}>
-            {planoAtual.preco} <Text style={styles.period}>/mês</Text>
+            {planoAtual.preco} <Text style={styles.period}>/mes</Text>
           </Text>
 
           <Text style={styles.nextBilling}>
-            Próxima cobrança: {planoAtual.proximaCobranca}
+            Proxima cobranca: {planoAtual.proximaCobranca}
           </Text>
 
           <TouchableOpacity style={styles.button}>
@@ -95,7 +95,7 @@ const ContaScreen = () => {
       </View>
 
       <View style={styles.section}>
-        <Text style={styles.sectionTitle}>Segurança</Text>
+        <Text style={styles.sectionTitle}>Seguranca</Text>
 
         <TouchableOpacity style={styles.optionItem} onPress={handleAlterarSenha}>
           <Ionicons name="lock-closed-outline" size={24} color="#E0E0E0" />
@@ -109,7 +109,7 @@ const ContaScreen = () => {
 
         <TouchableOpacity style={styles.optionItem}>
           <Ionicons name="eye-outline" size={24} color="#E0E0E0" />
-          <Text style={styles.optionText}>Perfil visível para todos</Text>
+          <Text style={styles.optionText}>Perfil visivel para todos</Text>
           <Ionicons name="chevron-forward" size={20} color="#888" />
         </TouchableOpacity>
 
@@ -121,7 +121,7 @@ const ContaScreen = () => {
 
         <TouchableOpacity style={styles.optionItem}>
           <Ionicons name="notifications-outline" size={24} color="#E0E0E0" />
-          <Text style={styles.optionText}>Notificações</Text>
+          <Text style={styles.optionText}>Notificacoes</Text>
           <Ionicons name="chevron-forward" size={20} color="#888" />
         </TouchableOpacity>
       </View>
