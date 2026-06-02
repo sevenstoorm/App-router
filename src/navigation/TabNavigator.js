@@ -6,9 +6,9 @@ import Assinatura from "../screens/Assinaturascreen";
 import Configuracoes from "../screens/Configuracaoscreen";
 import Conta from "../screens/Contascreen";
 import Home from "../screens/Homescreen";
-import Favoritos from "../screens/Favoritoscreen";
+import Favoritos from "../screens/FavoritoScreen";
 import Perfil from "../screens/Perfilscreen";
-import Pesquisa from "../screens/Pesquisascreen";
+import Pesquisa from "../screens/PesquisaScreen";
 import StackNavigator from "./StackNavigator";
 
 const Tab = createBottomTabNavigator();
@@ -59,8 +59,16 @@ export default function TabNavigator() {
       <Tab.Screen name="Favoritos" component={Favoritos} />
       <Tab.Screen name="Pesquisa" component={Pesquisa} />
       <Tab.Screen name="Conta" component={Conta} options={hiddenTabOptions} />
-      <Tab.Screen name="Configuracoes" component={Configuracoes} options={hiddenTabOptions} />
-      <Tab.Screen name="Assinatura" component={Assinatura} options={hiddenTabOptions} />
+      <Tab.Screen
+        name="Configuracoes"
+        component={Configuracoes}
+        options={hiddenTabOptions}
+      />
+      <Tab.Screen
+        name="Assinatura"
+        component={Assinatura}
+        options={hiddenTabOptions}
+      />
       <Tab.Screen
         name="Detalhes"
         component={StackNavigator}

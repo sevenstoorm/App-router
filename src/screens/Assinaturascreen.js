@@ -38,7 +38,7 @@ export default function Assinatura({ navigation }) {
       <Text style={styles.title}>Escolha seu Plano</Text>
 
       <Text style={styles.subtitle}>
-        Aproveite filmes e séries sem limites
+        Aproveite conteúdos exclusivos sem limites
       </Text>
 
       <View style={styles.cardsContainer}>

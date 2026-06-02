@@ -7,58 +7,71 @@ import {
   View,
 } from "react-native";
 
-const favoritos = [
-  {
-    id: 1,
-    titulo: "Interesletar",
-    genero: "Ficção científica",
-    nota: "9.5",
-    duração: "2h 49m",
-    imagem: "https://image.tmdb.org/t/p/w500/gEU2QniE6E77NI6lCU6MxlNBvIx.jpg",
-  },
+import { useFavorites } from "./FavoritesContext";
 
-  {
-    id: 3,
-    titulo: "Homem-Aranha no Aranhaverso",
-    genero: "Animação",
-    nota: "8.7",
-    duracao: "1h 57min",
-    imagem: "https://image.tmdb.org/t/p/w500/iiZZdoQBEYBv6id8su7ImL0oCbD.jpg",
-  },
+export default function FavoritosScreen({ navigation }) {
+  const { favoritos, removerFavorito } = useFavorites();
 
-];
+  return (
+    <ScrollView
+      style={styles.container}
+      contentContainerStyle={styles.content}
+    >
+      <View style={styles.header}>
+        <Text style={styles.title}>Favoritos</Text>
+      </View>
 
-
-export default function Favoritoscreen({ navigation }){
-  return(
-    <ScrollView style={styles.container} contentContainerStyle={styles.content}>
-      <view style={styles.header}>
-         <text style={styles.title}>Favoritos</text>
-         </view>
-
-
-         {favoritos.lenght > 0 ? (
-          favoritos.map((filme) => (
-            <Pressable
+      {favoritos.length > 0 ? (
+        favoritos.map((filme) => (
+          <Pressable
             key={filme.id}
             style={styles.card}
-            onPress={() => navigation.navigate("Detalhes", {filme})}>
-              <image source={{ uri: filme.imagem}} style={styles.poster}/>
-              <view style={styles.info}>
-                <text  style={styles.movieTitle}>{filme.titulo}</text>
-                <Text style={styles.movieMeta}>{filme.genero}</Text>
+            onPress={() =>
+              navigation.navigate("Descricao", { filme })
+            }
+          >
+            <Image
+              source={{ uri: filme.imagem }}
+              style={styles.poster}
+            />
+
+            <View style={styles.info}>
+              <Text style={styles.movieTitle}>
+                {filme.titulo}
+              </Text>
+
+              <Text style={styles.movieMeta}>
+                {filme.genero}
+              </Text>
+
               <View style={styles.row}>
-                <Text style={styles.badge}>Nota {filme.nota}</Text>
-                <Text style={styles.duration}>{filme.duracao}</Text>
+                <Text style={styles.badge}>
+                  Nota {filme.nota}
+                </Text>
+
+                <Text style={styles.duration}>
+                  {filme.duracao}
+                </Text>
               </View>
-              </view>
-            </Pressable>
-          ))
-         ) : (
-            <view style={styles.emptyContainer}>
-              <text style={styles.emptyText}>Você ainda não tem filmes favoritos</text>
-            </view>
-         )}
+
+              <Pressable
+                onPress={() => removerFavorito(filme.id)}
+                style={styles.removeButton}
+              >
+                <Text style={styles.removeText}>
+                  Remover
+                </Text>
+              </Pressable>
+            </View>
+          </Pressable>
+        ))
+      ) : (
+        <View style={styles.emptyContainer}>
+          <Text style={styles.emptyText}>
+            Você ainda não tem filmes favoritos
+          </Text>
+        </View>
+      )}
     </ScrollView>
   );
 }
@@ -88,15 +101,10 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     backgroundColor: "#FFFFFF",
     elevation: 2,
-    shadowColor: "#000000",
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.08,
-    shadowRadius: 8,
   },
   poster: {
     width: 96,
     minHeight: 142,
-    backgroundColor: "#E5E7EB",
   },
   info: {
     flex: 1,
@@ -132,16 +140,19 @@ const styles = StyleSheet.create({
     color: "#4B5563",
     fontSize: 13,
   },
-  // Estado vazio
+  removeButton: {
+    marginTop: 10,
+  },
+  removeText: {
+    color: "red",
+    fontWeight: "bold",
+  },
   emptyContainer: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
     marginTop: 100,
+    alignItems: "center",
   },
   emptyText: {
     color: "#6B7280",
     fontSize: 16,
-    textAlign: "center",
   },
 });

@@ -12,8 +12,25 @@ import { Ionicons } from "@expo/vector-icons";
 import { useFavorites } from "./FavoritesContext";
 
 const Descricao = ({ route, navigation }) => {
-  const { filme } = route.params;
+  const filme = route?.params?.filme;
   const { adicionarFavorito, isFavorito } = useFavorites();
+
+  if (!filme) {
+    return (
+      <View style={styles.container}>
+        <Text style={styles.errorText}>
+          Nenhum filme foi selecionado. Volte para a tela anterior e tente
+          novamente.
+        </Text>
+        <Pressable
+          style={styles.closeButton}
+          onPress={() => navigation.goBack()}
+        >
+          <Ionicons name="arrow-back" size={28} color="#000" />
+        </Pressable>
+      </View>
+    );
+  }
 
   const jaEhFavorito = isFavorito(filme.id);
 
@@ -126,6 +143,14 @@ const styles = StyleSheet.create({
     marginBottom: 10,
     color: "#000000",
     alignSelf: "center",
+  },
+  errorText: {
+    flex: 1,
+    textAlign: "center",
+    textAlignVertical: "center",
+    fontSize: 18,
+    padding: 20,
+    color: "#333",
   },
   sinopse: {
     fontSize: 15,
